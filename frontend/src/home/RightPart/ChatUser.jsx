@@ -2,7 +2,7 @@ import React from 'react'
 
 const ChatUser = () => {
     return (
-        <div className="flex items-center justify-center gap-4 p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="relative flex items-center h-[8%] justify-center gap-4 bg-slate-800 hover:bg-slate-700 duration-300 rounded-md">
             <div className="avatar avatar-online">
                 <div className="w-12 rounded-full ring ring-primary ring-offset-2">
                     <img 

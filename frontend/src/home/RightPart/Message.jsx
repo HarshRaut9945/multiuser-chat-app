@@ -1,17 +1,23 @@
 import React from "react";
+import Mess from "./Mess";
 
 const Message = () => {
     return (
-        <div className="flex flex-col gap-4 p-4">
-            <div className="chat chat-end">
-                <div className="chat-bubble chat-bubble-info">Calm down, Anakin.</div>
-            </div>
+        <div className="flex-1 overflow-y-auto"
+            style={{
+                minHeight: "calc(92vh - 8vh)",
+                display: "flex",
+                flexDirection: "column",
+                gap: "8px",
+                padding: "16px",
+                overflowY: "auto",
+                backgroundColor: "#1a1a1a"
+            }}
+        >
+            <Mess />
+            <Mess />
+            <Mess />
             
-            <div className="chat chat-start">
-                <div className="chat-bubble chat-bubble-warning">
-                    To be on the Council at your age.
-                </div>
-            </div>
         </div>
     );
 };
