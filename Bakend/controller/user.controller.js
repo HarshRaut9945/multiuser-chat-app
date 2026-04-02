@@ -92,3 +92,16 @@ export const logout=async(req,res)=>{
     
   }
 }
+
+export const allUser=async(req,res)=>{
+  try{
+    const loggedInUser=req.user._id;
+    const FilterUser=await User.find({_id:{$ne:loggedInUser}}).select("-password");
+    res.status(200).json(FilterUser);
+
+  }catch(error){
+    console.log("Error is AllUser Controller"+error);
+    
+
+  }
+}

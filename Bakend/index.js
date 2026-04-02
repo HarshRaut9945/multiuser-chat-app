@@ -1,13 +1,18 @@
 import express from "express";
-import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+import dotenv from "dotenv";
+import mongoose from "mongoose";
 import userRoute from "./routes/user.route.js";
+import cors from "cors";
 
 dotenv.config();
 
 const app = express();
+
+// ✅ Middleware
 app.use(express.json());
 
+// ✅ FIX: Add CORS
+app.use(cors());
 const PORT = process.env.PORT || 5000;
 const URI = process.env.MONGODB_URL;
 
@@ -19,7 +24,8 @@ app.get("/", (req, res) => {
 app.use("/user", userRoute);
 
 // ✅ Connect DB then start server
-mongoose.connect(URI)
+mongoose
+  .connect(URI)
   .then(() => {
     console.log("✅ Connected to MongoDB");
 
