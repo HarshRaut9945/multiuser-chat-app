@@ -1,5 +1,7 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import Cookies from "js-cookie";
+import axios from "axios";
 
 const useGetAllUser = () => {
     const [allUser,setAllUser]=useState([])
@@ -16,7 +18,7 @@ const useGetAllUser = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        setAllUsers(response.data);
+        setAllUser(response.data);
         setLoading(false);
       } catch (error) {
         console.log("Error in useGetAllUsers: " + error);
@@ -25,11 +27,7 @@ const useGetAllUser = () => {
     getUsers();
   }, []);
 
-  return (
-    <div>
-      
-    </div>
-  )
+  return [allUser,loading]
 }
 
 export default useGetAllUser
