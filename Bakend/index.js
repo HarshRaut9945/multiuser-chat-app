@@ -14,7 +14,11 @@ app.use(express.json());
 app.use(cookieParser());
 
 // ✅ FIX: Add CORS
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3001",
+  credentials: true
+}));
 const PORT = process.env.PORT || 5000;
 const URI = process.env.MONGODB_URL;
 
@@ -23,7 +27,7 @@ app.get("/", (req, res) => {
   res.send("Hello Bhai ✅");
 });
 
-app.use("/user", userRoute);
+app.use("/api/user", userRoute);
 
 // ✅ Connect DB then start server
 mongoose

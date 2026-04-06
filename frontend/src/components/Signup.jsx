@@ -27,8 +27,11 @@ const Signup = () => {
 
       // ✅ API call
       const response = await axios.post(
-        "http://localhost:4004/user/signup",
+        "/api/user/signup",
         userInfo,
+        {
+    withCredentials: true   // 🔥 ADD THIS
+  }
       );
 
       console.log(response.data);

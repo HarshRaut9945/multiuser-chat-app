@@ -21,8 +21,11 @@ const Login = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:4004/user/login",
-        userInfo
+        "/api/user/login",
+        userInfo,
+        {
+    withCredentials: true   // 🔥 ADD THIS
+  }
       );
 
       console.log(response.data);
