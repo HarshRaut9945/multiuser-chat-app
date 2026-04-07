@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoute from "./routes/user.route.js";
+import messageRoute from "./routes/message.route.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
@@ -15,10 +16,12 @@ app.use(cookieParser());
 
 // ✅ FIX: Add CORS
 // app.use(cors());
-app.use(cors({
-  origin: "http://localhost:3001",
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: "http://localhost:3001",
+    credentials: true,
+  }),
+);
 const PORT = process.env.PORT || 5000;
 const URI = process.env.MONGODB_URL;
 
@@ -27,7 +30,9 @@ app.get("/", (req, res) => {
   res.send("Hello Bhai ✅");
 });
 
+// ✅ Use Routes
 app.use("/api/user", userRoute);
+app.use("/api/message", messageRoute);
 
 // ✅ Connect DB then start server
 mongoose
