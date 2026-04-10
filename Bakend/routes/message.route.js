@@ -5,6 +5,6 @@ import secureRoute from "../middleware/secureRoute.js";
 const router = express.Router();
 
 router.post("/send/:id",secureRoute,sendMessage);
-router.get("/send/:id",secureRoute,getMessages);
+router.get("/get/:id", secureRoute, getMessages);
 
 export default router;
